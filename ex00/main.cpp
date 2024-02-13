@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 01:03:02 by gmachado          #+#    #+#             */
-/*   Updated: 2024/02/12 23:45:48 by gmachado         ###   ########.fr       */
+/*   Updated: 2024/02/13 03:52:26 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(void)
 {
 	std::stringstream ss("");
 	long long int ll;
+	int p = std::numeric_limits<long double>::digits10 + 1;
 
 	std::cout << "Test char literals:\n\n";
 
@@ -41,9 +42,9 @@ int main(void)
 	std::cout << "\n--> 0:\n";
 	ScalarConverter::convert("0");
 
-	ss << std::numeric_limits<int>::max();
-	std::cout << "\n--> Maximum integer value: "
-		<< std::numeric_limits<int>::max() << "\n";
+	ss << std::setprecision(p) << std::numeric_limits<int>::max();
+	std::cout << "\n--> Maximum integer value: " << std::fixed
+		<< std::setprecision(1) << std::numeric_limits<int>::max() << "\n";
 	ScalarConverter::convert(ss.str());
 
 	ss.str("");
@@ -75,37 +76,41 @@ int main(void)
 
 	ss.str("");
 	ss.clear();
-	ss << std::numeric_limits<float>::max();
+	ss << std::numeric_limits<float>::max() << 'f';
 	std::cout << "\n--> Largest positive float value: "
-		<< std::numeric_limits<float>::max() << "\n";
+		<< std::numeric_limits<float>::max() << "f\n";
 	ScalarConverter::convert(ss.str());
 
 	ss.str("");
 	ss.clear();
-	ss << std::numeric_limits<float>::max();
-	std::cout << "\n--> Largest positive float value + 0.1: "
-		<< static_cast<double>(std::numeric_limits<float>::max()) + 0.1 << "\n";
+	ss << (static_cast<double>(std::numeric_limits<float>::max()) + 0.1e+38)
+		<< 'f';
+	std::cout << "\n--> Largest positive float value + 0.1e+38: "
+		<< (static_cast<double>(std::numeric_limits<float>::max()) + 0.1e+38)
+		<< "f\n";
 	ScalarConverter::convert(ss.str());
 
 	ss.str("");
 	ss.clear();
-	ss << std::numeric_limits<float>::min();
+	ss << std::numeric_limits<float>::min() << 'f';
 	std::cout << "\n--> Smallest positive float value: "
-		<< std::numeric_limits<float>::min() << "\n";
+		<< std::numeric_limits<float>::min() << "f\n";
 	ScalarConverter::convert(ss.str());
 
 	ss.str("");
 	ss.clear();
-	ss << -std::numeric_limits<float>::max();
+	ss << -std::numeric_limits<float>::max() << 'f';
 	std::cout << "\n--> Largest negative float value: "
-		<< -std::numeric_limits<float>::max() << "\n";
+		<< -std::numeric_limits<float>::max() << "f\n";
 	ScalarConverter::convert(ss.str());
 
 	ss.str("");
 	ss.clear();
-	ss << static_cast<double>(-std::numeric_limits<float>::max()) - 0.1;
-	std::cout << "\n--> Largest negative float value - 0.1: "
-		<< -std::numeric_limits<float>::max() << "\n";
+	ss << (static_cast<double>(-std::numeric_limits<float>::max()) - 0.1e+38)
+		<< 'f';
+	std::cout << "\n--> Largest negative float value - 0.1e+38: "
+		<< (static_cast<double>(-std::numeric_limits<float>::max()) - 0.1e+38)
+		<< "f\n";
 	ScalarConverter::convert(ss.str());
 
 	ss.str("");
@@ -196,7 +201,7 @@ int main(void)
 		<< -std::numeric_limits<double>::min() << "\n";
 	ScalarConverter::convert(ss.str());
 
-	std::cout << "\n-->  negative double value - 0.1e308: -1.9e308\n";
+	std::cout << "\n--> Smallest negative double value - 0.1e308: -1.9e308\n";
 	ScalarConverter::convert("-1.9e308");
 
 	std::cout << "\n" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 01:51:55 by gmachado          #+#    #+#             */
-/*   Updated: 2024/02/12 03:20:31 by gmachado         ###   ########.fr       */
+/*   Updated: 2024/02/13 02:53:16 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 # include <sstream>
 #include <limits>
+#include <iomanip>
 
 typedef enum e_lit_type
 {
