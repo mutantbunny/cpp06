@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 01:51:55 by gmachado          #+#    #+#             */
-/*   Updated: 2024/02/13 02:53:16 by gmachado         ###   ########.fr       */
+/*   Updated: 2024/02/13 04:03:40 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ typedef enum e_lit_type
 	P_INF_LIT,
 	N_INF_LIT,
 	NAN_LIT
-
-
-
 } t_lit_type;
 
 // cmp_utils.cpp
