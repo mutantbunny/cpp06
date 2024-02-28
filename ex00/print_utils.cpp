@@ -6,7 +6,7 @@
 /*   By: gmachado <gmachado@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 01:51:38 by gmachado          #+#    #+#             */
-/*   Updated: 2024/02/13 03:54:08 by gmachado         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:28:05 by gmachado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,7 @@ void print_int_literal(std::string &str)
 	if (ss.fail())
 	{
 		std::cout << "char:   impossible";
-
-		if (i < 0)
-			std::cout << "\nint:    underflow";
-		else if (i > 0)
-			std::cout << "\nint:    overflow";
-		else
-			std::cout << "\nint:    not an int literal";
-
+		std::cout << "\nint:    impossible";
 		std::cout << "\nfloat:  impossible";
 		std::cout << "\ndouble: impossible" << std::endl;
 		return;
@@ -112,11 +105,7 @@ void print_flt_literal(std::string &str)
 	{
 		std::cout << "char:   impossible";
 		std::cout << "\nint:    impossible";
-
-		if (f != 0)
-			std::cout << "\nfloat:  out of range";
-		else
-			std::cout << "\nfloat:  not a float literal";
+		std::cout << "\nfloat:  impossible";
 
 		std::cout << "\ndouble: impossible" << std::endl;
 		return;
@@ -128,9 +117,9 @@ void print_flt_literal(std::string &str)
 		i = static_cast<int>(f);
 
 		if (i < std::numeric_limits<char>::min())
-			std::cout << "char:   underflow";
+			std::cout << "char:   impossible";
 		else if (i > std::numeric_limits<char>::max())
-			std::cout << "char:   overflow";
+			std::cout << "char:   impossible";
 		else
 		{
 			c = static_cast<char>(i);
@@ -142,15 +131,10 @@ void print_flt_literal(std::string &str)
 		}
 		std::cout << "\nint:    " << i;
 	}
-	else if (f < 0.0f)
-	{
-		std::cout << "char:   underflow";
-		std::cout << "\nint:    underflow";
-	}
 	else
 	{
-		std::cout << "char:   overflow";
-		std::cout << "\nint:    overflow";
+		std::cout << "char:   impossible";
+		std::cout << "\nint:    impossible";
 	}
 
 	std::cout << "\nfloat:  " << f << 'f';
@@ -172,11 +156,7 @@ void print_dbl_literal(std::string &str)
 		std::cout << "char:   impossible";
 		std::cout << "\nint:    impossible";
 		std::cout << "\nfloat:  impossible";
-
-		if (d != 0)
-			std::cout << "\ndouble: out of range" << std::endl;
-		else
-			std::cout << "\ndouble: not a double literal" << std::endl;
+		std::cout << "\ndouble: impossible" << std::endl;
 
 		return;
 	}
@@ -187,9 +167,9 @@ void print_dbl_literal(std::string &str)
 		i = static_cast<int>(d);
 
 		if (i < std::numeric_limits<char>::min())
-			std::cout << "char:   underflow";
+			std::cout << "char:   impossible";
 		else if (i > std::numeric_limits<char>::max())
-			std::cout << "char:   overflow";
+			std::cout << "char:   impossible";
 		else
 		{
 			c = static_cast<char>(i);
@@ -200,22 +180,17 @@ void print_dbl_literal(std::string &str)
 		}
 		std::cout << "\nint:    " << i;
 	}
-	else if (d < 0.0f)
-	{
-		std::cout << "char:   underflow";
-		std::cout << "\nint:    underflow";
-	}
 	else
 	{
-		std::cout << "char:   overflow";
-		std::cout << "\nint:    overflow";
+		std::cout << "char:   impossible";
+		std::cout << "\nint:    impossible";
 	}
 
 	if (d >= -std::numeric_limits<float>::max() &&
 		d <= std::numeric_limits<float>::max())
 		std::cout << "\nfloat:  " << static_cast<float>(d) << 'f';
 	else
-		std::cout << "\nfloat:  out of range";
+		std::cout << "\nfloat:  impossible";
 
 	std::cout << "\ndouble: " << d << std::endl;
 }
